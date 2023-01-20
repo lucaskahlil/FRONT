@@ -1,14 +1,16 @@
 import { FormEvent } from "react";
+import { api } from "../../../utils/api/api";
 
 export function LoginForm() {
   
-  function handleSubmit (e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit (e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const LoginPayload = {
-      email: e.currentTarget.email.value,
-      senha: e.currentTarget.senha.value,
+    const loginPayload = {
+      Email: e.currentTarget.email.value,
+      Password: e.currentTarget.senha.value,
     };
-    console.log(LoginPayload)
+    const userData = await api.login(loginPayload)
+    console.log(userData)
   }
 
   return (
@@ -16,7 +18,7 @@ export function LoginForm() {
       <h2>BlueLive</h2>
       <form onSubmit={handleSubmit}>
        <input placeholder="Seu e-mail" name="email"/>
-       <input placeholder="Sua senha" name="senha"/>
+       <input placeholder="Sua senha" type="password" name="senha"/>
        <button type="submit">Login</button>
       </form>
     </div>
