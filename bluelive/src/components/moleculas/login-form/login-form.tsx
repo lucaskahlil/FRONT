@@ -24,7 +24,7 @@ export function LoginForm() {
       setError(true);
       return;
     } else {
-      navigate("/home");
+      navigate("/profiles");
     }
   }
 
