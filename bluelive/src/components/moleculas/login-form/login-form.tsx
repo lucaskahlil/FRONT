@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { api } from "../../../utils/api/api";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Loading } from "../loading/loading";
 
 export function LoginForm() {
@@ -17,11 +17,12 @@ export function LoginForm() {
       Password: e.currentTarget.senha.value,
     };
     const userData = await api.login(loginPayload);
+    console.log(userData)
     setLoading(false);
 
-    if (userData.statusCode) {
+    if (!userData) {
       setError(true);
-      return console.log("ERROR");
+      return;
     } else {
       navigate("/home");
     }
