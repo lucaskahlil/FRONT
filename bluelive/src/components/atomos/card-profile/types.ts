@@ -1,4 +1,5 @@
 export interface SelectProps {
-    nome: string[],
-    image: string[],
+    Title: string[],
+    ImageURL: string,
+    selectedCard: () => void,
 }

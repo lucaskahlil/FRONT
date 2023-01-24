@@ -1,5 +1,4 @@
 import axios from "axios";
-import { async } from "q";
 import { LoginRequest } from "../types/request";
 
 axios.defaults.baseURL = "https://xbox-live-api.onrender.com";
