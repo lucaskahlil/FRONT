@@ -19,10 +19,11 @@ export function Profiles() {
 
   return (
     <div className="profile-container">
-    <div>profiles</div>
+    <h1>PROFILERS</h1>
     {profileList.map(profile => (
       <CardProfile profile = {profile}/>
     ))};
+    <button>+</button>
     </div>
   )
 }
