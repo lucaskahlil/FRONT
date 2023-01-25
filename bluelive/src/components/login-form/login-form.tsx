@@ -1,11 +1,13 @@
 import { FormEvent, useState } from "react";
-import { api } from "../../../utils/api/api";
+import { api } from "../../utils/api/api";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../loading/loading";
+import './login-form.css'
 
 export function LoginForm() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  
 
   const navigate = useNavigate();
 
@@ -17,6 +19,7 @@ export function LoginForm() {
       Password: e.currentTarget.senha.value,
     };
     const userData = await api.login(loginPayload);
+    localStorage.setItem('userId', userData.user.id)
     console.log(userData)
     setLoading(false);
 
@@ -31,9 +34,9 @@ export function LoginForm() {
   return (
     <>
     { loading ? (<Loading />) : (
-    <div>
-      <h2>BlueLive</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <h2>BlueLIVE</h2>
+      <form onSubmit={handleSubmit} className="form-container">
         <input placeholder="Seu e-mail" name="email" />
         <input placeholder="Sua senha" type="password" name="senha" />
         <button type="submit">Login</button>

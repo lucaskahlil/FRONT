@@ -41,9 +41,9 @@ export const api = {
     }
   },
 
-  getProfile: async () => {
+  getProfile: async (id: string | null) => {
     try {
-      const response = await axios.get("/profiles");
+      const response = await axios.get("/profile/" + id);
       return response.data;
     } catch (err) {
       alert(err);
