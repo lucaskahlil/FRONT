@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginRequest } from "../types/request";
+import { EditProfile, LoginRequest } from "../types/request";
 
 axios.defaults.baseURL = "https://xbox-live-api.onrender.com";
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -49,4 +49,15 @@ export const api = {
       alert(err);
     }
   },
+
+  patchProfile: async (data: EditProfile) => {
+    try {
+      const response = await axios.patch("/profile/" + data.id, {Title: data.Title, ImageURL: data.ImageURL})
+      return response.data;
+    } catch (err) {
+      alert(err)
+    }
+  },
+
+  
 };

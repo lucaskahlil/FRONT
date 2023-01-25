@@ -19,7 +19,6 @@ export function LoginForm() {
       Password: e.currentTarget.senha.value,
     };
     const userData = await api.login(loginPayload);
-    localStorage.setItem('userId', userData.user.id)
     console.log(userData)
     setLoading(false);
 
