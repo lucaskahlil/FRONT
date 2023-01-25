@@ -1,10 +1,12 @@
 import { FormEvent } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../../utils/api/api";
 
 
 export function EditProfileForm() {
     const { id } = useParams();
+
+    const navigate = useNavigate()
 
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -16,16 +18,18 @@ export function EditProfileForm() {
         };
 
         const userData = await api.patchProfile(editPayload)
+
+        navigate('/profiles')
     }
 
     return (
         <div className="edit-profile-container">
             <form onSubmit={handleSubmit}>
                 <h2>Editar Perfil</h2>
-                <input defaultValue={''} name="Title" />
-                <input defaultValue={''} name="ImageURL" />
-                <button >Editar</button>
-                <button>Deletar</button>
+                <input placeholder="Novo Nome" name="Title" />
+                <input placeholder="Nova Imagem" name="ImageURL" />
+                <button type="submit">Editar</button>
+                <button type="button">Deletar</button>
             </form>
         </div>
     )
