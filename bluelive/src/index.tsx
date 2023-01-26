@@ -18,6 +18,7 @@ root.render(
         <Route path="/home" element={<Home />} />
         <Route path="/profiles" element={<Profiles />} />
         <Route path='/editProfile/:id' element={<EditProfileForm/>} />
+        <Route path='/createProfile/' element={""} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

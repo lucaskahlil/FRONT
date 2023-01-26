@@ -59,5 +59,12 @@ export const api = {
     }
   },
 
-  
+  postProfile: async () => {
+    try {
+      const response = await axios.post("/profile")
+      return response.data;
+    } catch (err) {
+      alert(err)
+    }
+  }
 };
