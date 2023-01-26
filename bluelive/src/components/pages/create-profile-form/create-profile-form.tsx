@@ -14,18 +14,18 @@ export default function CreateProfileForm() {
             ImageURL: e.currentTarget.ImageURL.value
         };
 
-        const userData = await api.patchProfile(createPayload)
+        const userData = await api.postProfile(createPayload)
 
         navigate('/profiles')
     }
 
     return (
         <div className="edit-profile-container">
-            <form>
-                <h2>Editar Perfil</h2>
+            <form onSubmit={handleSubmit}>
+                <h2>Criar Perfil</h2>
                 <input placeholder="Nome" name="Title" />
                 <input placeholder="Imagem" name="ImageURL" />
-                <button type="submit">Editar</button>
+                <button type="submit">Criar</button>
             </form>
         </div>
     )

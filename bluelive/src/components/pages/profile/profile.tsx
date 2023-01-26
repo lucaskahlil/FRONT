@@ -26,7 +26,7 @@ export function Profiles() {
     {profileList.map(profile => (
       <CardProfile profile = {profile}/>
     ))};
-    <button onClick={() => {navigate('')}}>Criar novo Perfil</button>
+    <button onClick={() => {navigate('/createProfile/')}}>Criar novo Perfil</button>
     </div>
   )
 }

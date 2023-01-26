@@ -8,3 +8,8 @@ export type EditProfile = {
     Title: string;
     ImageURL: string;
 }
+
+export type CreateProfile = {
+    Title: string;
+    ImageURL: string;
+}
