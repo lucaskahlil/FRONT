@@ -1,6 +1,7 @@
 import { FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
 import { api } from "../../../utils/api/api";
+import './create-profile-form.css'
 
 
 export default function CreateProfileForm() {
@@ -20,12 +21,12 @@ export default function CreateProfileForm() {
     }
 
     return (
-        <div className="edit-profile-container">
-            <form onSubmit={handleSubmit}>
+        <div className="create-profile-container">
+            <form className="form-create" onSubmit={handleSubmit}>
                 <h2>Criar Perfil</h2>
                 <input placeholder="Nome" name="Title" />
                 <input placeholder="Imagem" name="ImageURL" />
-                <button type="submit">Criar</button>
+                <button className="button-create" type="submit">Criar</button>
             </form>
         </div>
     )

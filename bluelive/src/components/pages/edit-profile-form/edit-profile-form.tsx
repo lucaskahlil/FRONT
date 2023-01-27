@@ -22,6 +22,19 @@ export function EditProfileForm() {
         navigate('/profiles')
     }
 
+    async function handleDelete() {
+
+        const deletePayload = {
+            id: id ?? "",
+            Title: "",
+            ImageURL: "",
+        };
+
+        const userData = await api.deleteProfile(deletePayload);
+
+        navigate('/profiles')
+    }
+
     return (
         <div className="edit-profile-container">
             <form onSubmit={handleSubmit}>
@@ -29,7 +42,7 @@ export function EditProfileForm() {
                 <input placeholder="Novo Nome" name="Title" />
                 <input placeholder="Nova Imagem" name="ImageURL" />
                 <button type="submit">Editar</button>
-                <button type="button">Deletar</button>
+                <button type="button" onClick={handleDelete}>Deletar</button>
             </form>
         </div>
     )

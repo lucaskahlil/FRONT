@@ -13,3 +13,9 @@ export type CreateProfile = {
     Title: string;
     ImageURL: string;
 }
+
+export type DeleteProfile = {
+    id: string;
+    Title: string;
+    ImageURL: string;
+}

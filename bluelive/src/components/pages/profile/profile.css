@@ -1,10 +1,13 @@
-.profile-container {
-    width: 80%;
-    height: 90%;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.card-container {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   border: solid 1px black;
+   background-color: white;
+   border-radius: 40px;
+   width: 80vw;
 }
+
+
 
