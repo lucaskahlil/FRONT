@@ -11,8 +11,9 @@ export default function HomeGames() {
     const navigate = useNavigate()
 
     async function Games() {
-        const games = await api.getGame();
-        // setGamesList(games)
+        const profileId: string | null = localStorage.getItem('profileId')
+        const games = await api.getHomepageProfile(profileId);
+        setGamesList(games)
     }
 
     useEffect(() => {
@@ -21,10 +22,13 @@ export default function HomeGames() {
 
     return (
         <div>
-            {/* <h1>BlueGames</h1>
+            <h1>BlueGames</h1>
+            <h2>Favoritos</h2>
             {gamesList.map(game => (
-                // <CardGame game={game} />
-            ))} */}
+                <CardGame games={game} />
+            ))}
+            <h2>Generos</h2>
+            {}
         </div>
     )
 }

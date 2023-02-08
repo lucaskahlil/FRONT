@@ -76,9 +76,11 @@ export const api = {
     }
   },
 
-  getGame: async () => {
+  getHomepageProfile: async (id: string | null) => {
     try {
-      const response = await axios.get("/game")
+      const response = await axios.get("/homepage/" + id);
+      console.log(id)
+      return response.data
     } catch (err) {
       alert(err)
     }

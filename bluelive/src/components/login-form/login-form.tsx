@@ -19,7 +19,6 @@ export function LoginForm() {
       Password: e.currentTarget.senha.value,
     };
     const userData = await api.login(loginPayload);
-    console.log(userData)
     setLoading(false);
 
     if (!userData) {

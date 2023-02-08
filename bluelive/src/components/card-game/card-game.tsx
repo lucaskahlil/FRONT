@@ -4,7 +4,7 @@ import { GameResponse } from "../../utils/types/game"
 interface CardGamesProps {
     games: GameResponse
 }
-export default function CardGame({ games }: CardGamesProps) {
+export function CardGame({ games }: CardGamesProps) {
     
     const navigate = useNavigate()
     

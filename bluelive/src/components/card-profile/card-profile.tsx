@@ -9,11 +9,13 @@ interface CardProfileProps {
 export function CardProfile({ profile }: CardProfileProps) {  
   
   const navigate = useNavigate()
+
+  localStorage.setItem('profileId', profile.id)
   
   return (
     <div className="card-profile">
       <h2>{profile.Title}</h2>
-      <img src={profile.ImageURL} alt="" />
+      <img src={profile.ImageURL} alt="" onClick={() => navigate("/homepage/" + profile.id)} />
       <button onClick={() => {navigate('/editProfile/' + profile.id)}}>Editar</button>
     </div>
   );
