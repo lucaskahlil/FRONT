@@ -3,8 +3,8 @@ import { GameResponse } from "../../utils/types/game"
 
 interface CardGamesProps {
     games: any
-
 }
+
 export function CardGame({ games }: CardGamesProps) {
 
     const navigate = useNavigate()
