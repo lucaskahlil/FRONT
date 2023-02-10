@@ -1,6 +1,8 @@
+import React from "react";
 import { FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../../utils/api/api";
+import './edit-profile-form.css'
 
 
 export function EditProfileForm() {
@@ -37,12 +39,14 @@ export function EditProfileForm() {
 
     return (
         <div className="edit-profile-container">
-            <form onSubmit={handleSubmit}>
+            <form className="form-edit-profile" onSubmit={handleSubmit}>
                 <h2>Editar Perfil</h2>
                 <input placeholder="Novo Nome" name="Title" />
                 <input placeholder="Nova Imagem" name="ImageURL" />
+                <div className="buttons-container">
                 <button type="submit">Editar</button>
                 <button type="button" onClick={handleDelete}>Deletar</button>
+                </div>
             </form>
         </div>
     )

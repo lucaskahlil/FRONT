@@ -21,10 +21,10 @@ export function Profiles() {
   }, [])
 
   return (
-    <div className="">
+    <div className="perfil-container">
       <h1>PERFIS</h1>
       <div className="card-container">
-      <button onClick={() => { navigate('/createProfile/') }}>Novo Perfil</button>
+      <div className="button-container"><button onClick={() => { navigate('/createProfile/') }}>Novo Perfil</button></div>
         {profileList.map(profile => (
           <CardProfile profile={profile} />
         ))};

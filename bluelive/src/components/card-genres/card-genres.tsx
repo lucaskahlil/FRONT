@@ -2,13 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { GenreResponse } from "../../utils/types/genre"
 
 interface CardGenresProps {
-    genres: GenreResponse;
+    genres: any;
 }
 
 export function CardGenres({ genres }: CardGenresProps) {
     return (
     <div>
-        <button>{genres.Name}</button>
+        <h2>{genres.Name}</h2>
     </div>
   )
 }

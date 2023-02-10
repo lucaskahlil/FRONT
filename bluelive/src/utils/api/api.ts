@@ -30,6 +30,8 @@ axios.interceptors.response.use(
   }
 );
 
+//LOGIN
+
 export const api = {
   login: async ({ Email, Password }: LoginRequest) => {
     try {
@@ -40,6 +42,8 @@ export const api = {
       alert(err);
     }
   },
+
+  // PROFILE
 
   getProfile: async (id: string | null) => {
     try {
@@ -52,7 +56,7 @@ export const api = {
 
   patchProfile: async (data: EditProfile) => {
     try {
-      const response = await axios.patch("/profile/" + data.id, {Title: data.Title, ImageURL: data.ImageURL})
+      const response = await axios.patch("/profile/" + data.id, { Title: data.Title, ImageURL: data.ImageURL })
       return response.data;
     } catch (err) {
       alert(err)
@@ -76,13 +80,25 @@ export const api = {
     }
   },
 
-  getHomepageProfile: async (id: string | null) => {
+  // HOMEPAGE
+
+  getHomepageProfile: async (id: string | undefined) => {
     try {
       const response = await axios.get("/homepage/" + id);
-      console.log(id)
       return response.data
     } catch (err) {
       alert(err)
     }
-  }
+  },
+
+  // GENRES
+
+  getGenre: async () => {
+    try {
+      const response = await axios.get("/genre")
+      return response.data
+    } catch (err) {
+      alert(err) 
+    }
+  },
 };

@@ -9,9 +9,9 @@ interface CardProfileProps {
 export function CardProfile({ profile }: CardProfileProps) {  
   
   const navigate = useNavigate()
-
-  localStorage.setItem('profileId', profile.id)
   
+  
+
   return (
     <div className="card-profile">
       <h2>{profile.Title}</h2>
