@@ -101,4 +101,15 @@ export const api = {
       alert(err) 
     }
   },
+
+  // GAMES
+
+  getGame: async (id: string | undefined) => {
+    try {
+      const response = await axios.get("/game/" + id);
+      return response.data;
+    } catch (err) {
+      alert(err)
+    }
+  }
 };

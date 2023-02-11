@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { api } from "../../../utils/api/api"
-import { GameResponse } from "../../../utils/types/game"
+import { GamePayload, GameResponse } from "../../../utils/types/game"
 import { GenreResponse } from "../../../utils/types/genre"
 import { CardGame } from "../../card-game/card-game"
 import { CardGenres } from "../../card-genres/card-genres"
 
 
 export default function HomeGames() {
-    const [gamesList, setGamesList] = useState<GameResponse[]>([])
+    const [gamesList, setGamesList] = useState<GamePayload[]>([])
     const [genreList, setGenreList] = useState<GenreResponse[]>([])
 
     const navigate = useNavigate()
@@ -40,8 +40,8 @@ export default function HomeGames() {
                     <CardGame key={index} games={game} />
                 ))}
                 <h2>Generos</h2>
-                {genreList.map((genre) => (
-                    <CardGenres genres={genre} />
+                {genreList.map((genre, index) => (
+                    <CardGenres key= {index} genres={genre} />
                 ))}
             </div>
         </>

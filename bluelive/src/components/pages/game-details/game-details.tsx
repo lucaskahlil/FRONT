@@ -1,25 +1,36 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { api } from "../../../utils/api/api";
 import { GameResponse } from "../../../utils/types/game"
 
+export function GameDetails() {
+    const [gameDetail, setGameDetail] = useState<GameResponse>()
 
-interface CardGamesProps {
-    games: GameResponse;
-}
+    const { id } = useParams()
 
-export function GameDetails({ games }: CardGamesProps) {
+    async function GameDetail() {
+        const gameId: string | undefined = id
+        const game = await api.getGame(gameId)
+        setGameDetail(game)
+    }
+
+    useEffect(() => {
+        GameDetail();
+    }, [])
 
     return (
         <div>
             <div>
-                <button>Jogar</button>
-                <h2>Título jogo</h2>
-                <h2>IMDB Score</h2>
-                <h2>Favoritar</h2>
+                <button>JOGAR</button>
+                <h2>{gameDetail?.Title}</h2>
+                <h2>{gameDetail?.ImdbScore}</h2>
+                <button>Favoritar</button>
             </div>
             <div>
-                <p>Trailer</p>
-                <p>Gameplay</p>
+                <p>{gameDetail?.TrailerYouTubeUrl}</p>
+                <p>{gameDetail?.GameplayYouTubeUrl}</p>
             </div>
-            <p>Descrição</p>
+            <p>{gameDetail?.Description}</p>
         </div>
     )
 }
