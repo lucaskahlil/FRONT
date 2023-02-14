@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { api } from "../../../utils/api/api"
 import { GamePayload, GameResponse } from "../../../utils/types/game"
 import { GenreResponse } from "../../../utils/types/genre"
@@ -10,8 +10,6 @@ import { CardGenres } from "../../card-genres/card-genres"
 export default function HomeGames() {
     const [gamesList, setGamesList] = useState<GamePayload[]>([])
     const [genreList, setGenreList] = useState<GenreResponse[]>([])
-
-    const navigate = useNavigate()
 
     const {id} = useParams()
 

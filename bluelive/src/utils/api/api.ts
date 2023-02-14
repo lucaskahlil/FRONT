@@ -91,6 +91,16 @@ export const api = {
     }
   },
 
+  //GAME
+
+  postGame: async(data: any) => {
+    try {
+      const response = await axios.post("/game" , data)
+    } catch (err) {
+      alert(err)
+    }
+  },
+
   // GENRES
 
   getGenre: async () => {

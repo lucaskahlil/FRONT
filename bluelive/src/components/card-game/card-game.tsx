@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom"
-import { GamePayload, GameResponse } from "../../utils/types/game"
+import { useNavigate } from "react-router-dom"
+import { GamePayload } from "../../utils/types/game"
 
 interface CardGamesProps {
     games: GamePayload
@@ -8,8 +8,6 @@ interface CardGamesProps {
 export function CardGame({ games }: CardGamesProps) {
 
     const navigate = useNavigate()
-
-    console.log(games)
 
     return (
         <div>
