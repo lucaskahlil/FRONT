@@ -9,6 +9,7 @@ import CreateProfileForm from './components/pages/create-profile-form/create-pro
 import HomeGames from './components/pages/home-profile-games/home-profile-games';
 import { GameDetails } from './components/pages/game-details/game-details';
 import CreateGame from './components/pages/create-game/create-game';
+import { EditGame } from './components/pages/edit-game/edit-game';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,6 +25,7 @@ root.render(
         <Route path='/createProfile/' element={<CreateProfileForm/>} />
         <Route path='/game/:id' element={<GameDetails />} />
         <Route path='/createGame' element={<CreateGame />} />
+        <Route path='/editGame/:id' element={<EditGame />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

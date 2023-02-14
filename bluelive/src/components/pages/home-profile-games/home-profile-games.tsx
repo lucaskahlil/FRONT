@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { api } from "../../../utils/api/api"
 import { GamePayload, GameResponse } from "../../../utils/types/game"
 import { GenreResponse } from "../../../utils/types/genre"
@@ -10,8 +10,8 @@ import { CardGenres } from "../../card-genres/card-genres"
 export default function HomeGames() {
     const [gamesList, setGamesList] = useState<GamePayload[]>([])
     const [genreList, setGenreList] = useState<GenreResponse[]>([])
-
     const {id} = useParams()
+    const navigate = useNavigate()
 
     async function Games() {
         const profileId: string | undefined = id;
@@ -31,7 +31,7 @@ export default function HomeGames() {
 
     return (
         <>
-            <div>
+            <div className="home-container">
                 <h1>BlueGames</h1>
                 <h2>Favoritos</h2>
                 {gamesList.map((game, index) => (
@@ -41,6 +41,7 @@ export default function HomeGames() {
                 {genreList.map((genre, index) => (
                     <CardGenres key= {index} genres={genre} />
                 ))}
+                <button onClick={() => navigate('/createGame')}>Novo Jogo</button>
             </div>
         </>
     )

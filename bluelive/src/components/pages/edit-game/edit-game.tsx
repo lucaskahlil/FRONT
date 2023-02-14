@@ -1,31 +1,52 @@
-import { FormEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { api } from '../../../utils/api/api';
-import './create-game.css'
+import { FormEvent } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { api } from "../../../utils/api/api";
 
-export default function CreateGame() {
+
+export function EditGame() {
+    const { id } = useParams();
     const navigate = useNavigate()
-    const userId: string | null = localStorage.getItem('userId')
-
+    
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        const createPayload = {
+        const editPayload = {
+            id: id ?? "",
             Title: e.currentTarget.Title.value,
             CoverImageUrl: e.currentTarget.CoverImageUrl.value,
             Description: e.currentTarget.Description.value,
-            Year: e.currentTarget.Year.value,
-            ImdbScore: e.currentTarget.ImdbScore.value,
+            Year: parseInt(e.currentTarget.Year.value),
+            ImdbScore: parseFloat(e.currentTarget.ImdbScore.value),
             TrailerYouTubeUrl: e.currentTarget.TrailerYouTubeUrl.value,
             GameplayYouTubeUrl: e.currentTarget.GameplayYouTubeUrl.value,
-            genres: e.currentTarget.genres.value
         };
 
-        const userData = await api.postGame(createPayload)
+        console.log(editPayload)
+        
+        const editgame = await api.patchGame(editPayload)
 
-        navigate('/homepage/' + userId)
+        console.log(editgame)
+
+        // navigate('/')
     }
 
+    async function handleDelete() {
+
+        const deletePayload = {
+            id: id ?? "",
+            Title: "",
+            CoverImageUrl: "",
+            Description: "",
+            Year: "",
+            ImdbScore: "",
+            TrailerYouTubeUrl: "",
+            GameplayYouTubeUrl: "",
+        };
+
+        const userData = await api.deleteGame(deletePayload);
+
+        // navigate('/')
+    }
     return (
         <div className='create-game-container'>
             <form className='form-game' onSubmit={handleSubmit}>
@@ -37,8 +58,8 @@ export default function CreateGame() {
                 <input placeholder='IMDB Score' name='ImdbScore' type='number' />
                 <input placeholder='Trailer YouTube' name='TrailerYouTubeUrl' />
                 <input placeholder='GamePlay Youtube' name='GameplayYouTubeUrl' />
-                <input placeholder='Gênero' name='genres' />
-                <button type='submit'>Adicionar Jogo</button>
+                <button type='submit'>Editar Jogo</button>
+                <button type="button" onClick={handleDelete}>Deletar</button>
             </form>
         </div>
     )

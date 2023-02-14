@@ -1,4 +1,5 @@
 import axios from "axios";
+import { GameResponse } from "../types/game";
 import { CreateProfile, DeleteProfile, EditProfile, LoginRequest } from "../types/request";
 
 axios.defaults.baseURL = "https://xbox-live-api.onrender.com";
@@ -96,6 +97,23 @@ export const api = {
   postGame: async(data: any) => {
     try {
       const response = await axios.post("/game" , data)
+    } catch (err) {
+      alert(err)
+    }
+  },
+
+  patchGame: async(data: Omit<GameResponse, "genres">) => {
+    try {
+      const response = await axios.patch('/game/' + data.id, {Title: data.Title, CoverImageUrl: data.CoverImageUrl, Description: data.Description, Year: data.Year, ImdbScore: data.ImdbScore, TrailerYouTubeUrl: data.TrailerYouTubeUrl, GameplayYouTubeUrl: data.GameplayYouTubeUrl})
+      return response
+    } catch (err) {
+      alert(err)
+    }
+  },
+
+  deleteGame: async(data: any) => {
+    try {
+      const response = await axios.delete('/delete/' + data.id)
     } catch (err) {
       alert(err)
     }
