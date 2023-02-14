@@ -6,6 +6,7 @@ import { api } from "../../../utils/api/api";
 export function EditGame() {
     const { id } = useParams();
     const navigate = useNavigate()
+    const userId: string | null = localStorage.getItem('userId')
     
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -27,7 +28,7 @@ export function EditGame() {
 
         console.log(editgame)
 
-        // navigate('/')
+        navigate('/homepage/' + userId)
     }
 
     async function handleDelete() {
@@ -45,7 +46,7 @@ export function EditGame() {
 
         const userData = await api.deleteGame(deletePayload);
 
-        // navigate('/')
+        navigate('/homepage/' + userId)
     }
     return (
         <div className='create-game-container'>
